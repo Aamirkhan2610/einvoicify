@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { lhdnPhases } from "@/lib/site";
+import { lhdnPhases, ublTechSpecs, ublCoreElements, myInvoisDocTypes } from "@/lib/site";
 import { Container, Section, SectionHeading } from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/Button";
 import { CTA } from "@/components/home/CTA";
@@ -10,6 +10,7 @@ import {
   Scale,
   ServerCog,
   ShieldAlert,
+  FileCode2,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -79,6 +80,95 @@ export default function CompliancePage() {
           </Container>
         </div>
       </section>
+
+      <Section id="ubl" className="bg-white">
+        <Container>
+          <SectionHeading
+            eyebrow="Technical specification"
+            title={`${ublTechSpecs.standard} · ${ublTechSpecs.formats.join(" & ")} · ${ublTechSpecs.model}`}
+            description={`${ublTechSpecs.platform} accepts e-Invoices structured to OASIS UBL 2.1. Einvoicify maps ERP data into valid payloads, submits via ${ublTechSpecs.channels.join(" or ")}, and surfaces ${ublTechSpecs.validation.toLowerCase()}.`}
+          />
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                title: "Standard",
+                body: ublTechSpecs.standardFull,
+              },
+              {
+                title: "Formats",
+                body: `${ublTechSpecs.formats.join(" and ")} — follow UBL element sequence for both.`,
+              },
+              {
+                title: "Channels",
+                body: ublTechSpecs.channels.join(" · "),
+              },
+              {
+                title: "Validation",
+                body: ublTechSpecs.validation,
+              },
+              {
+                title: "Verification",
+                body: ublTechSpecs.qr,
+              },
+              {
+                title: "Retention",
+                body: ublTechSpecs.retention,
+              },
+            ].map((card) => (
+              <div
+                key={card.title}
+                className="rounded-2xl border border-slate-200 bg-slate-50/60 p-5"
+              >
+                <div className="mb-2 inline-flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-brand-blue">
+                  <FileCode2 className="h-4 w-4" />
+                </div>
+                <h3 className="font-semibold text-brand-navy">{card.title}</h3>
+                <p className="mt-1 text-sm text-slate-600">{card.body}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 grid gap-6 lg:grid-cols-2">
+            <div className="rounded-2xl border border-slate-200 p-6">
+              <h3 className="font-semibold text-brand-navy">Document type codes</h3>
+              <ul className="mt-4 space-y-2">
+                {myInvoisDocTypes.map((d) => (
+                  <li key={d.code} className="flex gap-3 text-sm">
+                    <span className="font-mono font-bold text-brand-blue">
+                      {d.code}
+                    </span>
+                    <span className="text-slate-600">
+                      <strong className="text-brand-navy">{d.name}</strong> —{" "}
+                      {d.description}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="rounded-2xl border border-slate-200 bg-brand-navy p-6 text-white">
+              <h3 className="font-semibold">Illustrative UBL paths</h3>
+              <ul className="mt-4 space-y-3">
+                {ublCoreElements.map((el) => (
+                  <li key={el.path}>
+                    <p className="font-mono text-xs text-sky-300">{el.path}</p>
+                    <p className="text-sm text-slate-300">{el.note}</p>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-4 text-[11px] text-slate-500">
+                Ref:{" "}
+                <a
+                  href="https://sdk.myinvois.hasil.gov.my/"
+                  className="text-sky-300 hover:underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  MyInvois SDK
+                </a>
+              </p>
+            </div>
+          </div>
+        </Container>
+      </Section>
 
       <Section id="phases" className="bg-slate-50/80">
         <Container>

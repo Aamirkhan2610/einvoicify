@@ -220,3 +220,142 @@ export const productHighlights = [
       "Automatically email validated e-invoices with the references buyers and auditors expect.",
   },
 ] as const;
+
+/**
+ * LHDN / IRBM MyInvois technical facts (indicative for marketing UI).
+ * Source references: IRBM e-Invoice Guideline, MyInvois SDK (sdk.myinvois.hasil.gov.my).
+ * Always verify latest rules on official LHDN channels.
+ */
+export const ublTechSpecs = {
+  standard: "UBL 2.1",
+  standardFull: "Universal Business Language (UBL) 2.1 — OASIS",
+  formats: ["XML", "JSON"],
+  model: "Continuous Transaction Control (CTC)",
+  platform: "MyInvois (IRBM / LHDN)",
+  channels: ["MyInvois API", "MyInvois Portal"],
+  mandatoryFieldsNote: "Structured mandatory & optional fields per IRBM annexures",
+  validation: "IRBM validation · UUID · digitally signed response",
+  qr: "QR code for authenticity verification",
+  retention: "Long-term e-Invoice retention for audit readiness",
+} as const;
+
+/** MyInvois document type codes (common set) */
+export const myInvoisDocTypes = [
+  {
+    code: "01",
+    name: "Invoice",
+    description: "Standard supplier-issued commercial invoice submitted to MyInvois.",
+  },
+  {
+    code: "02",
+    name: "Credit Note",
+    description: "Adjusts a previously validated invoice (returns, discounts, corrections).",
+  },
+  {
+    code: "03",
+    name: "Debit Note",
+    description: "Increases amounts linked to a prior invoice when additional charges apply.",
+  },
+  {
+    code: "04",
+    name: "Refund Note",
+    description: "Documents refunds in scenarios defined by IRBM guidelines.",
+  },
+  {
+    code: "11+",
+    name: "Self-billed",
+    description: "Buyer-issued e-invoices where self-billing rules apply (e.g. certain purchases).",
+  },
+] as const;
+
+/** Key UBL / MyInvois payload concepts for enterprise buyers */
+export const ublCoreElements = [
+  {
+    path: "cbc:ID",
+    label: "e-Invoice code / number",
+    note: "Your unique document number within the supplier system.",
+  },
+  {
+    path: "cbc:InvoiceTypeCode",
+    label: "Document type code",
+    note: "e.g. 01 Invoice, 02 Credit Note — with listVersionID for e-Invoice version.",
+  },
+  {
+    path: "cac:AccountingSupplierParty",
+    label: "Supplier party",
+    note: "TIN, registration identifiers, and address structured for IRBM validation.",
+  },
+  {
+    path: "cac:AccountingCustomerParty",
+    label: "Buyer party",
+    note: "Buyer TIN / BRN and contact data required for valid submissions.",
+  },
+  {
+    path: "cac:TaxTotal / cac:LegalMonetaryTotal",
+    label: "Tax & monetary totals",
+    note: "SST classifications, tax amounts, and payable totals must reconcile.",
+  },
+  {
+    path: "cac:InvoiceLine",
+    label: "Line items",
+    note: "Classification codes, quantities, unit prices, and line tax detail.",
+  },
+] as const;
+
+/** Efficiency outcomes to emphasise on the homepage (illustrative enterprise KPIs) */
+export const efficiencyStats = [
+  {
+    value: "Seconds",
+    label: "Submit → IRBM response",
+    detail: "Near real-time MyInvois validation instead of end-of-month portal catch-up.",
+  },
+  {
+    value: "16+",
+    label: "ERP / accounting systems",
+    detail: "Connect SAP, Dynamics, NetSuite, Sage, SQL Accounting, Tally, Medic & more.",
+  },
+  {
+    value: "UBL 2.1",
+    label: "XML & JSON native",
+    detail: "Payloads aligned to OASIS UBL 2.1 as required by MyInvois SDK guidance.",
+  },
+  {
+    value: "−90%+",
+    label: "Manual effort reduction",
+    detail: "Automate mapping, validation retries, UUID capture, and customer email delivery.",
+  },
+] as const;
+
+/** Enterprise-style capability pillars (inspired by market leaders, Einvoicify-specific) */
+export const enterprisePillars = [
+  {
+    title: "100% LHDN MyInvois alignment",
+    description:
+      "Document models, validation workflows, and status handling designed around IRBM e-Invoice rules — reduce rejection risk and stay audit-ready.",
+  },
+  {
+    title: "High-volume batch efficiency",
+    description:
+      "Process large invoice batches from ERP or file feeds without re-keying into the portal. Scale from hundreds to thousands of documents.",
+  },
+  {
+    title: "API · SFTP · Excel/CSV integration",
+    description:
+      "Flexible connection paths: real-time API, secure file transfer, or standardised spreadsheets — match your IT maturity and volume.",
+  },
+  {
+    title: "Real-time status tracking",
+    description:
+      "See submitted, valid, invalid, and cancelled states with IRBM UUID references in one operations console.",
+  },
+  {
+    title: "Pre-submission validation",
+    description:
+      "Catch missing TIN, tax codes, and structural UBL issues before they become MyInvois rejections.",
+  },
+  {
+    title: "Automated customer delivery",
+    description:
+      "Email validated e-invoices with the references buyers need — cut dispatch labour and follow-up delays.",
+  },
+] as const;

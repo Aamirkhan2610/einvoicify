@@ -68,8 +68,8 @@ export function Features() {
       <Container>
         <SectionHeading
           eyebrow="Platform benefits"
-          title="Effortless e-invoicing with full automation"
-          description="Discover how Einvoicify removes operational friction while keeping every document within LHDN MyInvois requirements."
+          title="Efficiency without compromising LHDN compliance"
+          description="Enterprise-grade automation: UBL 2.1 mapping, batch throughput, ERP connectors, and continuous MyInvois updates — so finance teams reclaim hours every week."
         />
 
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

@@ -19,7 +19,8 @@ const footerLinks = [
     title: "Insights",
     links: [
       { label: "Case Studies", href: "/case-studies" },
-      { label: "LHDN MyInvois", href: "/compliance" },
+      { label: "UBL 2.1 & MyInvois specs", href: "/#ubl-specs" },
+      { label: "LHDN Compliance", href: "/compliance" },
       { label: "Implementation Phases", href: "/compliance#phases" },
       { label: "Request a Demo", href: "/contact" },
     ],
