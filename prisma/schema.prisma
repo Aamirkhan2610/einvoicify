@@ -1,0 +1,136 @@
+// Einvoicify — SQLite schema (local-friendly)
+// Marketing site + CRM (leads, chat, admin)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+/// General contact / sales enquiry from the website
+model ContactEnquiry {
+  id           String   @id @default(cuid())
+  name         String
+  email        String
+  phone        String?
+  company      String?
+  message      String
+  /// GENERAL | DEMO | PRICE | PRODUCT | SUPPORT | INTEGRATION
+  type         String   @default("GENERAL")
+  /// NEW | CONTACTED | QUALIFIED | CONVERTED | CLOSED
+  status       String   @default("NEW")
+  /// CONTACT_FORM | DEMO_REQUEST | NEWSLETTER | CHAT | PRICE_INQUIRY | PARTNER | OTHER
+  source       String   @default("CONTACT_FORM")
+  turnoverBand String?
+  erpSystem    String?
+  notes        String?
+  assignedTo   String?
+  ipAddress    String?
+  userAgent    String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([email])
+  @@index([status])
+  @@index([type])
+  @@index([createdAt])
+}
+
+/// Structured demo / onboarding request
+model DemoRequest {
+  id              String    @id @default(cuid())
+  name            String
+  email           String
+  phone           String?
+  company         String
+  jobTitle        String?
+  erpSystem       String?
+  monthlyInvoices String?
+  turnoverBand    String?
+  notes           String?
+  preferredDate   DateTime?
+  status          String    @default("NEW")
+  source          String    @default("DEMO_REQUEST")
+  ipAddress       String?
+  userAgent       String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([email])
+  @@index([status])
+  @@index([createdAt])
+}
+
+/// Newsletter / product update subscribers
+model Subscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+/// Customer chat conversation (website widget → CRM)
+model Conversation {
+  id            String    @id @default(cuid())
+  sessionId     String    @unique
+  visitorName   String?
+  visitorEmail  String?
+  visitorPhone  String?
+  company       String?
+  topic         String?
+  /// OPEN | PENDING | RESOLVED | CLOSED
+  status        String    @default("OPEN")
+  source        String    @default("CHAT")
+  assignedTo    String?
+  lastMessageAt DateTime  @default(now())
+  ipAddress     String?
+  userAgent     String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  messages      Message[]
+
+  @@index([status])
+  @@index([lastMessageAt])
+  @@index([visitorEmail])
+}
+
+model Message {
+  id             String       @id @default(cuid())
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  /// CUSTOMER | AGENT | SYSTEM
+  sender         String
+  body           String
+  agentName      String?
+  readAt         DateTime?
+  createdAt      DateTime     @default(now())
+
+  @@index([conversationId, createdAt])
+}
+
+/// Simple CRM admin accounts (password hashed)
+model CrmAdmin {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String
+  passwordHash String
+  active       Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model CrmSession {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  adminId   String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([token])
+  @@index([adminId])
+}
