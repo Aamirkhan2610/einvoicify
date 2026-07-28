@@ -1,17 +1,14 @@
 import { NextResponse } from "next/server";
 import {
-  createCrmSession,
-  ensureDefaultAdmin,
+  createSignedSession,
+  getAdminCredentials,
   verifyPassword,
   CRM_SESSION_COOKIE,
 } from "@/lib/auth";
 import { crmLoginSchema } from "@/lib/validations";
-import { prisma, ensureDatabase } from "@/lib/prisma";
 
 export async function POST(request: Request) {
   try {
-    await ensureDatabase();
-    await ensureDefaultAdmin();
     const body = await request.json();
     const parsed = crmLoginSchema.safeParse(body);
 
@@ -22,14 +19,13 @@ export async function POST(request: Request) {
       );
     }
 
-    const admin = await prisma.crmAdmin.findUnique({
-      where: { email: parsed.data.email.trim().toLowerCase() },
-    });
+    const creds = getAdminCredentials();
+    const email = parsed.data.email.trim().toLowerCase();
+    const password = parsed.data.password;
 
     if (
-      !admin ||
-      !admin.active ||
-      !verifyPassword(parsed.data.password, admin.passwordHash)
+      email !== creds.email ||
+      !verifyPassword(password, creds.password)
     ) {
       return NextResponse.json(
         { error: "Invalid email or password" },
@@ -37,11 +33,14 @@ export async function POST(request: Request) {
       );
     }
 
-    const { token, expiresAt } = await createCrmSession(admin.id);
+    const { token, expiresAt } = createSignedSession({
+      email: creds.email,
+      name: creds.name,
+    });
 
     const response = NextResponse.json({
       success: true,
-      admin: { id: admin.id, email: admin.email, name: admin.name },
+      admin: { id: "env-admin", email: creds.email, name: creds.name },
     });
 
     response.cookies.set(CRM_SESSION_COOKIE, token, {
@@ -56,7 +55,7 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error("[api/crm/login]", error);
     return NextResponse.json(
-      { error: "Login failed. Ensure the database is running." },
+      { error: "Login failed. Please try again." },
       { status: 500 }
     );
   }

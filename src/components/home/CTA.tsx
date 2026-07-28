@@ -11,16 +11,15 @@ export function CTA() {
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.18),transparent_45%)]" />
           <div className="relative mx-auto max-w-2xl">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Ready to automate Malaysia e-invoicing?
+              Ready for easier e-invoicing?
             </h2>
             <p className="mt-4 text-base text-white/90 sm:text-lg">
-              Talk to our team about ERP integration, MyInvois onboarding, and a
-              rollout plan sized to your invoice volume — or try the live product
-              demo first.
+              Book a short call. We will recommend portal, SFTP upload, or API
+              based on how your team works today — no jargon required.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <ButtonLink href="/contact" variant="white" size="lg">
-                Request a Demo
+                Talk to us
                 <ArrowRight className="h-4 w-4" />
               </ButtonLink>
               <ButtonLink
@@ -29,14 +28,13 @@ export function CTA() {
                 variant="outline"
                 className="border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white"
               >
-                Live product demo
+                Try the demo
                 <ExternalLink className="h-4 w-4" />
               </ButtonLink>
             </div>
             <p className="mt-6 inline-flex items-center gap-2 text-sm text-white/80">
               <MessageCircle className="h-4 w-4" />
-              Prefer chat? Use the widget for product & pricing inquiries —
-              our CRM team responds from the dashboard.
+              Prefer chat? Ask about pricing or which solution fits you.
             </p>
             <p className="mt-3 text-sm text-white/70">
               <a

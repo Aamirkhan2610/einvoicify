@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getCrmSession } from "@/lib/auth";
-import { prisma } from "@/lib/prisma";
+import { prisma, ensureDatabase } from "@/lib/prisma";
 import { leadStatusSchema } from "@/lib/validations";
 
 export async function GET(request: Request) {
@@ -14,6 +14,7 @@ export async function GET(request: Request) {
   const status = searchParams.get("status");
 
   try {
+    await ensureDatabase();
     if (type === "demo") {
       const demos = await prisma.demoRequest.findMany({
         where: status

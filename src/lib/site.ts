@@ -3,7 +3,7 @@ export const siteConfig = {
   legalName: "Einvoicify",
   tagline: "E-Invoicing Made Simple | Malaysia",
   description:
-    "LHDN MyInvois-compliant e-invoicing for Malaysian businesses. Automate invoice creation, IRBM validation, and customer delivery — integrated with 16+ ERP and accounting systems.",
+    "Simple e-invoicing for Malaysian businesses. Stay compliant with LHDN, send invoices faster, and choose the way of working that fits your team — portal, file upload, or API.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://einvoicify.my",
   productUrl: process.env.NEXT_PUBLIC_PRODUCT_URL ?? "https://app.einvoicify.my",
   contact: {
@@ -19,19 +19,145 @@ export const siteConfig = {
     },
   },
   social: {},
-  /** Primary header nav — keep short so the bar stays one line */
   nav: [
-    { label: "Product", href: "/product" },
-    { label: "Features", href: "/features" },
+    { label: "Solutions", href: "/#solutions" },
     { label: "How it works", href: "/how-it-works" },
     { label: "Cases", href: "/case-studies" },
-    { label: "Integrations", href: "/integrations" },
+    { label: "Product", href: "/product" },
     { label: "Compliance", href: "/compliance" },
     { label: "Contact", href: "/contact" },
   ],
 } as const;
 
-/** ERP / accounting systems supported for integration */
+/** Three ways customers use Einvoicify — plain language */
+export const solutions = [
+  {
+    id: "portal",
+    number: "01",
+    title: "Portal access",
+    shortTitle: "Portal",
+    headline: "Log in and manage invoices online",
+    description:
+      "Use our easy web portal to create, send, and track e-invoices. Ideal for finance teams who want a clear screen and simple steps — no IT project required to get started.",
+    bestFor: "SMEs, finance teams, first-time e-invoice users",
+    points: [
+      "Create and send invoices from a simple dashboard",
+      "See which invoices are accepted or need attention",
+      "Email invoices to customers automatically",
+      "Works on desktop — no special software to install",
+    ],
+    cta: { label: "Try the portal", href: "https://app.einvoicify.my" },
+    icon: "monitor" as const,
+  },
+  {
+    id: "sftp",
+    number: "02",
+    title: "Upload documents via SFTP",
+    shortTitle: "SFTP upload",
+    headline: "Drop files — we handle the rest",
+    description:
+      "Already export invoices from your accounting system as files? Securely upload them (SFTP) in bulk. We process the batch and submit e-invoices for you — perfect for high volume without changing how staff work day to day.",
+    bestFor: "Busy teams with regular invoice file exports",
+    points: [
+      "Upload invoice files securely in bulk",
+      "Scheduled or on-demand batches",
+      "Fewer manual portal clicks for large volumes",
+      "Works alongside your existing export process",
+    ],
+    cta: { label: "Ask about SFTP setup", href: "/contact" },
+    icon: "upload" as const,
+  },
+  {
+    id: "api",
+    number: "03",
+    title: "API as a service",
+    shortTitle: "API",
+    headline: "Connect your systems automatically",
+    description:
+      "Link your ERP, POS, or custom software so e-invoices are created and submitted in the background. Best when you want full automation and minimal manual work as your business grows.",
+    bestFor: "Larger businesses and companies with IT support",
+    points: [
+      "Connect ERP, POS, or custom systems",
+      "Invoices flow automatically after sales",
+      "Real-time status back to your team",
+      "Scales as your invoice volume grows",
+    ],
+    cta: { label: "Talk to our team", href: "/contact" },
+    icon: "link" as const,
+  },
+] as const;
+
+export const useCases = [
+  {
+    title: "Retail & multi-outlet",
+    story:
+      "Head office needs one place to see e-invoice status across all stores — without asking every outlet to type into a government portal.",
+    outcome: "Bulk upload or system link; less weekend catch-up for finance.",
+  },
+  {
+    title: "Manufacturing & wholesale",
+    story:
+      "Hundreds of invoices leave the ERP every week. Re-typing them is slow and error-prone.",
+    outcome: "API or file feed turns ERP invoices into compliant e-invoices.",
+  },
+  {
+    title: "Professional services & SMEs",
+    story:
+      "Partners raise invoices occasionally and need something simple that still meets LHDN rules.",
+    outcome: "Portal access — create, send, and track without a big IT project.",
+  },
+  {
+    title: "Healthcare & clinics",
+    story:
+      "Billing lives in clinical software; finance still needs LHDN-ready documents for corporate clients.",
+    outcome: "Connect systems or upload exports so teams stay in their tools.",
+  },
+] as const;
+
+export const plainBenefits = [
+  {
+    title: "Stay on the right side of LHDN",
+    description:
+      "Built for Malaysia’s e-invoice requirements so your team spends less time worrying about compliance rules.",
+  },
+  {
+    title: "Save hours every week",
+    description:
+      "Less re-typing, less chasing status, fewer rejected invoices — finance can focus on the business.",
+  },
+  {
+    title: "Pick what fits your team",
+    description:
+      "Start with the portal, move to file upload, or go fully automated with API when you are ready.",
+  },
+  {
+    title: "Local support you can call",
+    description:
+      "Malaysia-based team at Oasis Damansara — we help with onboarding, questions, and rollout planning.",
+  },
+] as const;
+
+export const simpleSteps = [
+  {
+    step: "1",
+    title: "Tell us how you invoice today",
+    description:
+      "Spreadsheet, accounting software, ERP, or paper-heavy process — we match a simple path for your size.",
+  },
+  {
+    step: "2",
+    title: "Choose portal, upload, or API",
+    description:
+      "We set you up on the option that fits: easy web portal, secure file upload, or system connection.",
+  },
+  {
+    step: "3",
+    title: "Send e-invoices with confidence",
+    description:
+      "Track status, email customers, and keep records tidy — with far less manual work.",
+  },
+] as const;
+
 export const integrations = [
   { name: "SAP", category: "Enterprise ERP" },
   { name: "Microsoft Dynamics", category: "Enterprise ERP" },
@@ -51,7 +177,6 @@ export const integrations = [
   { name: "Custom API / CSV", category: "Integration" },
 ] as const;
 
-/** LHDN MyInvois implementation phases (indicative) */
 export const lhdnPhases = [
   {
     phase: "Phase 1",
@@ -97,135 +222,130 @@ export const monthlyInvoiceBands = [
 ] as const;
 
 export const chatTopics = [
-  "Product demo",
   "Pricing inquiry",
-  "ERP integration",
+  "Portal access",
+  "SFTP upload",
+  "API connection",
   "LHDN compliance",
-  "Technical support",
-  "Partnership",
+  "Product demo",
   "Other",
 ] as const;
 
-/** Professional case studies for Malaysian e-invoicing */
 export const caseStudies = [
   {
     slug: "manufacturing-erp-automation",
     industry: "Manufacturing",
     company: "Mid-sized manufacturer · Selangor",
-    title: "From manual IRBM portal uploads to fully automated MyInvois",
+    title: "From weekend portal work to automatic e-invoices",
     summary:
-      "A manufacturing group processing 4,000+ invoices monthly eliminated weekend portal catch-up by connecting SAP to Einvoicify and automating validation, submission, and customer email.",
+      "A manufacturing team processing thousands of invoices monthly stopped re-typing into the government portal by connecting their ERP to Einvoicify.",
     challenge:
-      "Finance staff spent 15–20 hours per week re-keying invoices into the MyInvois portal. Rejection rates climbed when tax codes or buyer TINs were incomplete, and customer delivery lagged validation by days.",
+      "Finance staff spent many hours each week re-keying invoices. Errors caused delays and customer delivery lagged.",
     solution:
-      "Einvoicify mapped SAP billing output to LHDN schema, enforced pre-submission validation, auto-retried transient failures, and emailed validated e-invoices with UUID/QR references to buyers.",
+      "We linked their ERP so invoices flow automatically, get checked, submitted, and emailed to customers.",
     results: [
-      { label: "Manual portal time", value: "−92%" },
-      { label: "First-pass validation", value: "99.4%" },
-      { label: "Time to customer delivery", value: "< 2 min" },
-      { label: "Monthly invoices automated", value: "4,200+" },
+      { label: "Manual portal time", value: "Much less" },
+      { label: "Accepted first time", value: "Very high" },
+      { label: "Customer receives invoice", value: "Minutes" },
+      { label: "Monthly invoices", value: "4,000+" },
     ],
     quote:
-      "We stopped treating e-invoice as a separate project. It became part of month-end close — quiet, reliable, and auditable.",
+      "We stopped treating e-invoice as a separate project. It became part of normal month-end — quiet and reliable.",
     quoteRole: "Finance Controller",
-    tags: ["SAP", "Automation", "Phase 2"],
+    tags: ["ERP link", "High volume", "Manufacturing"],
   },
   {
     slug: "retail-multi-outlet-consolidated",
     industry: "Retail",
     company: "Multi-outlet retail chain · Klang Valley",
-    title: "Consolidated e-invoicing across 28 outlets without disrupting POS",
+    title: "One process for 28 outlets — stores kept selling",
     summary:
-      "A retail operator needed LHDN compliance for B2B wholesale and selected B2C scenarios without replacing their POS or central accounting stack.",
+      "A retail group needed e-invoice compliance without changing every store’s day-to-day sales system.",
     challenge:
-      "Outlet systems generated fragmented invoice data. Head office struggled to produce compliant consolidated documents and track which transactions required individual vs consolidated e-invoices.",
+      "Invoice data was scattered. Head office struggled to know what was submitted and what still needed attention.",
     solution:
-      "Einvoicify ingested nightly sales extracts, applied classification rules, generated consolidated e-invoices where allowed, and submitted individual documents for wholesale customers via API.",
+      "Nightly file uploads and clear rules for when to use individual vs consolidated e-invoices — managed from one place.",
     results: [
       { label: "Outlets covered", value: "28" },
-      { label: "Rejection queue depth", value: "Near zero" },
-      { label: "Finance FTE freed", value: "1.5" },
-      { label: "Compliance readiness", value: "Phase 3–4" },
+      { label: "Finance time freed", value: "Meaningful" },
+      { label: "Store disruption", value: "None" },
+      { label: "Visibility", value: "One dashboard" },
     ],
     quote:
-      "Our stores kept selling. Head office got one dashboard for every e-invoice status across the chain.",
+      "Our stores kept selling. Head office finally had one view of every e-invoice status.",
     quoteRole: "Head of Finance",
-    tags: ["Retail", "Consolidated e-Invoice", "SQL Accounting"],
+    tags: ["Retail", "File upload", "Multi-outlet"],
   },
   {
     slug: "professional-services-built-in-module",
     industry: "Professional services",
     company: "Advisory & consulting firm · KL",
-    title: "No ERP? Live on MyInvois in under two weeks with the invoicing module",
+    title: "Live on e-invoice in days with the portal",
     summary:
-      "A growing professional services firm without enterprise ERP used Einvoicify’s practical invoicing module to issue LHDN-compliant invoices from day one.",
+      "A growing firm without a big ERP used Einvoicify’s portal to issue compliant invoices quickly.",
     challenge:
-      "Spreadsheets and Word templates could not produce valid e-invoices. The firm needed something simple for partners to raise invoices while remaining IRBM-ready.",
+      "Word and spreadsheet invoices could not meet LHDN requirements. Partners needed something simple.",
     solution:
-      "Deployed Einvoicify’s built-in invoicing module with client master data, service classifications, and automated MyInvois submission plus branded email delivery.",
+      "Portal access with simple invoice entry, automatic submission, and branded email to clients.",
     results: [
-      { label: "Go-live", value: "11 days" },
+      { label: "Go-live", value: "~2 weeks" },
       { label: "Partner training", value: "1 session" },
-      { label: "Validated invoices (Q1)", value: "100%" },
-      { label: "Client email delivery", value: "Automated" },
+      { label: "Client delivery", value: "Automatic" },
+      { label: "IT project size", value: "Small" },
     ],
     quote:
-      "We did not need a six-month ERP programme. We needed compliant invoices that our clients receive the same day.",
+      "We did not need a six-month software programme. We needed invoices our clients receive the same day.",
     quoteRole: "Managing Partner",
-    tags: ["SME", "Invoicing module", "Fast go-live"],
+    tags: ["SME", "Portal", "Fast start"],
   },
   {
     slug: "healthcare-multi-system-integration",
     industry: "Healthcare",
     company: "Private healthcare group · Malaysia",
-    title: "Unifying Medic and accounting for hospital e-invoice compliance",
+    title: "Clinical billing and finance finally aligned",
     summary:
-      "A private healthcare operator integrated clinical billing (Medic) with finance systems so patient and corporate invoices met MyInvois rules without double entry.",
+      "A healthcare operator connected clinical billing with finance so corporate invoices met e-invoice rules without double entry.",
     challenge:
-      "Clinical and finance systems held partial buyer data. TIN validation failures and mismatched amounts created audit risk and delayed corporate billing cycles.",
+      "Incomplete buyer details caused rejections and slowed corporate billing cycles.",
     solution:
-      "Einvoicify became the integration layer: enrich buyer TIN/BRN, map service codes, submit documents, and sync UUIDs back for audit and AR matching.",
+      "System connection to enrich data, submit e-invoices, and keep a clear trail for audit and collections.",
     results: [
-      { label: "Systems connected", value: "Medic + finance" },
-      { label: "TIN validation errors", value: "−87%" },
-      { label: "Corporate billing cycle", value: "3 days faster" },
-      { label: "Audit trail", value: "End-to-end" },
+      { label: "Double entry", value: "Reduced" },
+      { label: "Rejection issues", value: "Down sharply" },
+      { label: "Billing cycle", value: "Faster" },
+      { label: "Audit trail", value: "Clearer" },
     ],
     quote:
-      "Compliance stopped being a fire drill between clinical ops and finance. One pipeline, one source of truth.",
+      "Compliance stopped being a fire drill between operations and finance.",
     quoteRole: "Group CFO",
-    tags: ["Healthcare", "Medic", "Integration"],
+    tags: ["Healthcare", "System link", "API"],
   },
 ] as const;
 
 export const productHighlights = [
   {
-    title: "Live MyInvois operations",
+    title: "Simple dashboard",
     description:
-      "Submit, track, and resolve e-invoices with real-time IRBM status — from draft to validated UUID.",
+      "See invoice status clearly — accepted, pending, or needs a fix.",
   },
   {
-    title: "ERP-ready connectors",
+    title: "Works with your tools",
     description:
-      "16+ ERP and accounting platforms already automated, plus API and file-based options for custom stacks.",
-  },
-  {
-    title: "Built-in invoicing",
-    description:
-      "Raise compliant invoices in-product when you do not yet have an ERP, or for edge document types.",
+      "Portal alone, file upload, or connect ERP and accounting systems.",
   },
   {
     title: "Customer delivery",
     description:
-      "Automatically email validated e-invoices with the references buyers and auditors expect.",
+      "Send invoices to customers by email after they are ready.",
+  },
+  {
+    title: "Malaysia-ready",
+    description:
+      "Designed around LHDN e-invoice requirements for local businesses.",
   },
 ] as const;
 
-/**
- * LHDN / IRBM MyInvois technical facts (indicative for marketing UI).
- * Source references: IRBM e-Invoice Guideline, MyInvois SDK (sdk.myinvois.hasil.gov.my).
- * Always verify latest rules on official LHDN channels.
- */
+/** Technical — used on /compliance, not homepage */
 export const ublTechSpecs = {
   standard: "UBL 2.1",
   standardFull: "Universal Business Language (UBL) 2.1 — OASIS",
@@ -239,7 +359,6 @@ export const ublTechSpecs = {
   retention: "Long-term e-Invoice retention for audit readiness",
 } as const;
 
-/** MyInvois document type codes (common set) */
 export const myInvoisDocTypes = [
   {
     code: "01",
@@ -264,11 +383,10 @@ export const myInvoisDocTypes = [
   {
     code: "11+",
     name: "Self-billed",
-    description: "Buyer-issued e-invoices where self-billing rules apply (e.g. certain purchases).",
+    description: "Buyer-issued e-invoices where self-billing rules apply.",
   },
 ] as const;
 
-/** Key UBL / MyInvois payload concepts for enterprise buyers */
 export const ublCoreElements = [
   {
     path: "cbc:ID",
@@ -302,60 +420,58 @@ export const ublCoreElements = [
   },
 ] as const;
 
-/** Efficiency outcomes to emphasise on the homepage (illustrative enterprise KPIs) */
 export const efficiencyStats = [
   {
-    value: "Seconds",
-    label: "Submit → IRBM response",
-    detail: "Near real-time MyInvois validation instead of end-of-month portal catch-up.",
+    value: "3 ways",
+    label: "to get started",
+    detail: "Portal, SFTP upload, or API — pick what fits your team today.",
   },
   {
     value: "16+",
-    label: "ERP / accounting systems",
-    detail: "Connect SAP, Dynamics, NetSuite, Sage, SQL Accounting, Tally, Medic & more.",
+    label: "systems we connect",
+    detail: "Popular ERP and accounting software used across Malaysia.",
   },
   {
-    value: "UBL 2.1",
-    label: "XML & JSON native",
-    detail: "Payloads aligned to OASIS UBL 2.1 as required by MyInvois SDK guidance.",
+    value: "Faster",
+    label: "invoice cycle",
+    detail: "Less re-typing and chasing — more time for real work.",
   },
   {
-    value: "−90%+",
-    label: "Manual effort reduction",
-    detail: "Automate mapping, validation retries, UUID capture, and customer email delivery.",
+    value: "Local",
+    label: "Malaysia support",
+    detail: "Team based in Selangor — call or email when you need help.",
   },
 ] as const;
 
-/** Enterprise-style capability pillars (inspired by market leaders, Einvoicify-specific) */
 export const enterprisePillars = [
   {
-    title: "100% LHDN MyInvois alignment",
+    title: "LHDN-ready process",
     description:
-      "Document models, validation workflows, and status handling designed around IRBM e-Invoice rules — reduce rejection risk and stay audit-ready.",
+      "Stay aligned with Malaysia e-invoice requirements without turning finance into an IT project.",
   },
   {
-    title: "High-volume batch efficiency",
+    title: "Handles busy months",
     description:
-      "Process large invoice batches from ERP or file feeds without re-keying into the portal. Scale from hundreds to thousands of documents.",
+      "Whether you send dozens or thousands of invoices, choose the path that keeps pace.",
   },
   {
-    title: "API · SFTP · Excel/CSV integration",
+    title: "Portal · SFTP · API",
     description:
-      "Flexible connection paths: real-time API, secure file transfer, or standardised spreadsheets — match your IT maturity and volume.",
+      "Three clear options — start simple and grow into automation when you need it.",
   },
   {
-    title: "Real-time status tracking",
+    title: "Clear status tracking",
     description:
-      "See submitted, valid, invalid, and cancelled states with IRBM UUID references in one operations console.",
+      "Know what was sent, what was accepted, and what needs a quick fix.",
   },
   {
-    title: "Pre-submission validation",
+    title: "Fewer avoidable errors",
     description:
-      "Catch missing TIN, tax codes, and structural UBL issues before they become MyInvois rejections.",
+      "Checks before submission help reduce rejected invoices and rework.",
   },
   {
-    title: "Automated customer delivery",
+    title: "Customers get invoices on time",
     description:
-      "Email validated e-invoices with the references buyers need — cut dispatch labour and follow-up delays.",
+      "Optional automatic email delivery after invoices are ready.",
   },
 ] as const;

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getCrmSession } from "@/lib/auth";
-import { prisma } from "@/lib/prisma";
+import { prisma, ensureDatabase } from "@/lib/prisma";
 import {
   chatAgentReplySchema,
   conversationStatusSchema,
@@ -17,6 +17,7 @@ export async function GET(request: Request) {
   const status = searchParams.get("status");
 
   try {
+    await ensureDatabase();
     if (id) {
       const conversation = await prisma.conversation.findUnique({
         where: { id },
@@ -61,6 +62,7 @@ export async function POST(request: Request) {
   }
 
   try {
+    await ensureDatabase();
     const body = await request.json();
     const parsed = chatAgentReplySchema.safeParse(body);
     if (!parsed.success) {

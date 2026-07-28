@@ -11,9 +11,9 @@ export function CaseStudies({ limit = 3 }: { limit?: number }) {
     <Section id="case-studies" className="bg-white">
       <Container>
         <SectionHeading
-          eyebrow="Customer outcomes"
-          title="Case studies: e-invoice done right in Malaysia"
-          description="Real-world patterns from manufacturing, retail, healthcare, and professional services — how teams hit LHDN MyInvois compliance without drowning finance in manual work."
+          eyebrow="Customer stories"
+          title="Results from real Malaysian businesses"
+          description="How teams reduced manual work and stayed ready for LHDN e-invoice — told in everyday language."
         />
 
         <div className="mt-10 grid gap-5 lg:grid-cols-3">
@@ -58,17 +58,6 @@ export function CaseStudies({ limit = 3 }: { limit?: number }) {
                 </footer>
               </blockquote>
 
-              <div className="mt-4 flex flex-wrap gap-1.5">
-                {study.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-semibold text-slate-600"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
               <Link
                 href={`/case-studies#${study.slug}`}
                 className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-brand-blue transition group-hover:gap-1.5"
@@ -82,7 +71,7 @@ export function CaseStudies({ limit = 3 }: { limit?: number }) {
 
         <div className="mt-10 text-center">
           <ButtonLink href="/case-studies" variant="outline">
-            View all case studies
+            View all stories
           </ButtonLink>
         </div>
       </Container>

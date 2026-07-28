@@ -6,30 +6,29 @@ import { Container } from "@/components/ui/Container";
 
 const footerLinks = [
   {
-    title: "Platform",
+    title: "Solutions",
     links: [
-      { label: "Product", href: "/product" },
-      { label: "Features", href: "/features" },
-      { label: "How It Works", href: "/how-it-works" },
-      { label: "Integrations", href: "/integrations" },
+      { label: "Portal access", href: "/#solutions" },
+      { label: "SFTP upload", href: "/#solutions" },
+      { label: "API as a service", href: "/#solutions" },
       { label: "Live demo", href: siteConfig.productUrl, external: true },
-    ],
-  },
-  {
-    title: "Insights",
-    links: [
-      { label: "Case Studies", href: "/case-studies" },
-      { label: "UBL 2.1 & MyInvois specs", href: "/#ubl-specs" },
-      { label: "LHDN Compliance", href: "/compliance" },
-      { label: "Implementation Phases", href: "/compliance#phases" },
-      { label: "Request a Demo", href: "/contact" },
     ],
   },
   {
     title: "Company",
     links: [
+      { label: "How it works", href: "/how-it-works" },
+      { label: "Case studies", href: "/case-studies" },
+      { label: "Product", href: "/product" },
       { label: "Contact", href: "/contact" },
-      { label: "CRM Login", href: "/crm/login" },
+    ],
+  },
+  {
+    title: "Resources",
+    links: [
+      { label: "LHDN compliance (technical)", href: "/compliance" },
+      { label: "Integrations", href: "/integrations" },
+      { label: "Features", href: "/features" },
       { label: "Privacy", href: "/privacy" },
       { label: "Terms", href: "/terms" },
     ],
@@ -57,8 +56,8 @@ export function Footer() {
               </span>
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-400">
-              LHDN MyInvois-ready e-invoicing for Malaysian businesses. Automate
-              validation, submission, and delivery — integrated with your ERP.
+              Simple e-invoicing for Malaysian businesses. Portal, secure file
+              upload, or API — choose what fits your team.
             </p>
             <a
               href={siteConfig.productUrl}
@@ -103,7 +102,7 @@ export function Footer() {
                 </h3>
                 <ul className="mt-4 space-y-2.5">
                   {group.links.map((link) => (
-                    <li key={link.href}>
+                    <li key={link.label + link.href}>
                       {"external" in link && link.external ? (
                         <a
                           href={link.href}
@@ -129,14 +128,12 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-3 border-t border-white/10 pt-8 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-10 flex flex-col gap-3 border-t border-white/10 pt-8 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {year} {siteConfig.name}. All rights reserved. Built for Malaysia
-            LHDN e-Invoice compliance.
+            © {year} {siteConfig.name}. All rights reserved.
           </p>
           <p className="max-w-md sm:text-right">
-            References IRBM MyInvois guidelines. Always verify current
-            requirements on{" "}
+            Always confirm current e-invoice rules on{" "}
             <a
               href="https://www.hasil.gov.my"
               target="_blank"
