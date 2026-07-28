@@ -28,6 +28,7 @@ export const metadata: Metadata = {
     "e-invoicing ERP integration",
     "Malaysia electronic invoice",
     "Einvoicify",
+    "UBL 2.1",
     "consolidated e-invoice",
     "self-billed e-invoice",
   ],
@@ -48,7 +49,17 @@ export const metadata: Metadata = {
     images: ["/logo.png"],
   },
   robots: { index: true, follow: true },
-  icons: { icon: "/logo.png", apple: "/logo.png" },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.png", sizes: "1254x1254", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+    shortcut: ["/favicon.ico"],
+  },
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({
