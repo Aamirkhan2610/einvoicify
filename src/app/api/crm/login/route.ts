@@ -6,10 +6,11 @@ import {
   CRM_SESSION_COOKIE,
 } from "@/lib/auth";
 import { crmLoginSchema } from "@/lib/validations";
-import { prisma } from "@/lib/prisma";
+import { prisma, ensureDatabase } from "@/lib/prisma";
 
 export async function POST(request: Request) {
   try {
+    await ensureDatabase();
     await ensureDefaultAdmin();
     const body = await request.json();
     const parsed = crmLoginSchema.safeParse(body);

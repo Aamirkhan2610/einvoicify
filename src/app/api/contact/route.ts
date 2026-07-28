@@ -1,9 +1,10 @@
 import { NextResponse } from "next/server";
 import { contactSchema } from "@/lib/validations";
-import { prisma } from "@/lib/prisma";
+import { prisma, ensureDatabase } from "@/lib/prisma";
 
 export async function POST(request: Request) {
   try {
+    await ensureDatabase();
     const body = await request.json();
     const parsed = contactSchema.safeParse(body);
 

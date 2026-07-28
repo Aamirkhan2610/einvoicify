@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import { createHash, randomBytes, timingSafeEqual } from "crypto";
-import { prisma } from "@/lib/prisma";
+import { prisma, ensureDatabase } from "@/lib/prisma";
 
 export const CRM_SESSION_COOKIE = "einvoicify_crm_session";
 const SESSION_DAYS = 7;
@@ -22,6 +22,8 @@ export function createSessionToken(): string {
 }
 
 export async function ensureDefaultAdmin() {
+  await ensureDatabase();
+
   const email =
     process.env.CRM_ADMIN_EMAIL?.toLowerCase() ?? "admin@einvoicify.my";
   const password = process.env.CRM_ADMIN_PASSWORD ?? "einvoicify2026";
@@ -56,6 +58,12 @@ export async function destroyCrmSession(token: string) {
 }
 
 export async function getCrmSession() {
+  try {
+    await ensureDatabase();
+  } catch {
+    return null;
+  }
+
   const jar = await cookies();
   const token = jar.get(CRM_SESSION_COOKIE)?.value;
   if (!token) return null;

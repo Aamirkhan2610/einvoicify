@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { randomBytes } from "crypto";
 import { chatStartSchema, chatMessageSchema } from "@/lib/validations";
-import { prisma } from "@/lib/prisma";
+import { prisma, ensureDatabase } from "@/lib/prisma";
 
 function clientMeta(request: Request) {
   const ipAddress =
@@ -15,6 +15,7 @@ function clientMeta(request: Request) {
 /** Start a conversation or append a customer message */
 export async function POST(request: Request) {
   try {
+    await ensureDatabase();
     const body = await request.json();
     const isFollowUp = Boolean(body.sessionId && body.body && !body.message);
 
