@@ -17,18 +17,19 @@ const footerLinks = [
   {
     title: "Company",
     links: [
-      { label: "How it works", href: "/how-it-works" },
+      { label: "About IOS", href: "/about" },
+      { label: "Services", href: "/services" },
       { label: "Case studies", href: "/case-studies" },
-      { label: "Product", href: "/product" },
       { label: "Contact", href: "/contact" },
     ],
   },
   {
     title: "Resources",
     links: [
-      { label: "LHDN compliance (technical)", href: "/compliance" },
+      { label: "Product", href: "/product" },
+      { label: "LHDN compliance", href: "/compliance" },
       { label: "Integrations", href: "/integrations" },
-      { label: "Features", href: "/features" },
+      { label: "iosmalaysia.com", href: siteConfig.legacySite, external: true },
       { label: "Privacy", href: "/privacy" },
       { label: "Terms", href: "/terms" },
     ],
@@ -55,9 +56,13 @@ export function Footer() {
                 <span className="text-brand-red">E</span>INVOICIFY
               </span>
             </Link>
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-400">
-              Simple e-invoicing for Malaysian businesses. Portal, secure file
-              upload, or API — choose what fits your team.
+            <p className="mt-3 text-xs font-medium text-slate-400">
+              A product of {siteConfig.legalName} ({siteConfig.registrationNo})
+            </p>
+            <p className="mt-3 max-w-sm text-sm leading-relaxed text-slate-400">
+              QAD ERP partner and LHDN e-invoice specialist in Malaysia. Portal,
+              secure file upload, or API — backed by the IOS team at Oasis
+              Damansara.
             </p>
             <a
               href={siteConfig.productUrl}
@@ -73,22 +78,24 @@ export function Footer() {
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-blue" />
                 <span>{siteConfig.contact.address.full}</span>
               </li>
+              {siteConfig.people.map((p) => (
+                <li key={p.email}>
+                  <a
+                    href={p.phoneHref}
+                    className="inline-flex items-center gap-2.5 transition hover:text-white"
+                  >
+                    <Phone className="h-4 w-4 shrink-0 text-brand-blue" />
+                    {p.name}: {p.phone}
+                  </a>
+                </li>
+              ))}
               <li>
                 <a
-                  href={siteConfig.contact.phoneHref}
-                  className="inline-flex items-center gap-2.5 transition hover:text-white"
-                >
-                  <Phone className="h-4 w-4 shrink-0 text-brand-blue" />
-                  {siteConfig.contact.phone}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`mailto:${siteConfig.contact.email}`}
+                  href={`mailto:${siteConfig.people[0].email}`}
                   className="inline-flex items-center gap-2.5 transition hover:text-white"
                 >
                   <Mail className="h-4 w-4 shrink-0 text-brand-blue" />
-                  {siteConfig.contact.email}
+                  {siteConfig.people[0].email}
                 </a>
               </li>
             </ul>
@@ -130,10 +137,11 @@ export function Footer() {
 
         <div className="mt-10 flex flex-col gap-3 border-t border-white/10 pt-8 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {year} {siteConfig.name}. All rights reserved.
+            © {year} {siteConfig.legalName}. All rights reserved. Einvoicify is
+            a product of IOS Malaysia.
           </p>
           <p className="max-w-md sm:text-right">
-            Always confirm current e-invoice rules on{" "}
+            Confirm e-invoice rules on{" "}
             <a
               href="https://www.hasil.gov.my"
               target="_blank"

@@ -1,35 +1,103 @@
+/**
+ * Site content — Einvoicify product + company details from
+ * Integrated Operation Solutions Sdn. Bhd. (iosmalaysia.com)
+ */
+
 export const siteConfig = {
   name: "Einvoicify",
-  legalName: "Einvoicify",
+  legalName: "Integrated Operation Solutions Sdn. Bhd.",
+  registrationNo: "947729-A",
+  shortCompany: "IOS",
+  companyBrand: "IOS Malaysia",
+  legacySite: "http://iosmalaysia.com",
   tagline: "E-Invoicing Made Simple | Malaysia",
   description:
-    "Simple e-invoicing for Malaysian businesses. Stay compliant with LHDN, send invoices faster, and choose the way of working that fits your team — portal, file upload, or API.",
+    "Einvoicify by Integrated Operation Solutions (IOS) — LHDN e-invoice and QAD ERP partner in Malaysia. Portal, SFTP upload, or API. Oasis Damansara, Selangor.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://einvoicify.my",
   productUrl: process.env.NEXT_PUBLIC_PRODUCT_URL ?? "https://app.einvoicify.my",
   contact: {
     email: "info@einvoicify.my",
+    generalEmail: "admin@iosmalaysia.com",
     phone: "+6016-338-1871",
     phoneHref: "tel:+60163381871",
     address: {
-      line1: "E3A05 Capital 5, Oasis Square",
+      line1: "Capital 5, Oasis Square",
       line2: "No. 2, Jalan PJU 1A/7A, Oasis Damansara",
       city: "47301 Petaling Jaya, Selangor D.E.",
       country: "Malaysia",
-      full: "E3A05 Capital 5, Oasis Square, No. 2, Jalan PJU 1A/7A, Oasis Damansara, 47301 Petaling Jaya, Selangor D.E., Malaysia",
+      full: "Capital 5, Oasis Square, No. 2, Jalan PJU 1A/7A, Oasis Damansara, 47301 Petaling Jaya, Selangor D.E., Malaysia",
     },
   },
+  people: [
+    {
+      name: "Christopher De Souza",
+      email: "cds@iosmalaysia.com",
+      phone: "+6016-338-1871",
+      phoneHref: "tel:+60163381871",
+      role: "Contact",
+    },
+    {
+      name: "Johnny Lim",
+      email: "johnnylim@iosmalaysia.com",
+      phone: "+6016-332-8049",
+      phoneHref: "tel:+60163328049",
+      role: "Contact",
+    },
+  ],
   social: {},
   nav: [
     { label: "Solutions", href: "/#solutions" },
-    { label: "How it works", href: "/how-it-works" },
-    { label: "Cases", href: "/case-studies" },
+    { label: "About", href: "/about" },
+    { label: "Services", href: "/services" },
     { label: "Product", href: "/product" },
-    { label: "Compliance", href: "/compliance" },
+    { label: "Cases", href: "/case-studies" },
     { label: "Contact", href: "/contact" },
   ],
 } as const;
 
-/** Three ways customers use Einvoicify — plain language */
+/** Headline achievement from iosmalaysia.com home */
+export const achievement = {
+  title: "LHDN e-Invoice implementation achievement",
+  quote:
+    "23 ERP customers across 4 different ERP systems successfully adopted the IOS LHDN e-Invoice solution since 1 August — with over 10 more set to launch by leveraging our ePINTAR API middleware.",
+  stats: [
+    { value: "23+", label: "ERP customers live on e-invoice" },
+    { value: "4", label: "Different ERP platforms" },
+    { value: "10+", label: "More customers preparing to go live" },
+    { value: "30+", label: "QAD implementations delivered" },
+  ],
+} as const;
+
+/** WHY IOS and ePINTAR — from iosmalaysia.com (plain language) */
+export const whyIos = [
+  {
+    title: "Compliance you can trust",
+    description:
+      "Our solutions are built for LHDN e-invoice requirements, with alignment to MDEC and PEPPOL-related connectivity where needed.",
+  },
+  {
+    title: "Automatic updates",
+    description:
+      "When LHDN rules change, we update the platform so you stay current without a scramble every time guidelines shift.",
+  },
+  {
+    title: "Works with your existing systems",
+    description:
+      "Designed to cater for QAD, SAP, Epicor, Sage, Syteline and other systems — so you are not forced into heavy customisation just to start e-invoicing.",
+  },
+  {
+    title: "Operations continue as normal",
+    description:
+      "Your teams keep working the way they know. We fit e-invoice into the process instead of stopping the business for a long IT project.",
+  },
+  {
+    title: "Ready for wider digital trade",
+    description:
+      "Through PEPPOL-accredited middleware (ePINTAR / PINTAR API), you can prepare for digital document exchange with enabled partners beyond local filing alone.",
+  },
+] as const;
+
+/** Three ways customers use Einvoicify */
 export const solutions = [
   {
     id: "portal",
@@ -38,7 +106,7 @@ export const solutions = [
     shortTitle: "Portal",
     headline: "Log in and manage invoices online",
     description:
-      "Use our easy web portal to create, send, and track e-invoices. Ideal for finance teams who want a clear screen and simple steps — no IT project required to get started.",
+      "Use our easy web portal to create, send, and track e-invoices. Ideal for finance teams who want a clear screen and simple steps — no big IT project required to get started.",
     bestFor: "SMEs, finance teams, first-time e-invoice users",
     points: [
       "Create and send invoices from a simple dashboard",
@@ -56,7 +124,7 @@ export const solutions = [
     shortTitle: "SFTP upload",
     headline: "Drop files — we handle the rest",
     description:
-      "Already export invoices from your accounting system as files? Securely upload them (SFTP) in bulk. We process the batch and submit e-invoices for you — perfect for high volume without changing how staff work day to day.",
+      "Already export invoices from your accounting or ERP as files? Securely upload them (SFTP) in bulk. We process the batch and submit e-invoices for you — ideal for high volume without changing day-to-day work.",
     bestFor: "Busy teams with regular invoice file exports",
     points: [
       "Upload invoice files securely in bulk",
@@ -74,7 +142,7 @@ export const solutions = [
     shortTitle: "API",
     headline: "Connect your systems automatically",
     description:
-      "Link your ERP, POS, or custom software so e-invoices are created and submitted in the background. Best when you want full automation and minimal manual work as your business grows.",
+      "Link your ERP, POS, or custom software so e-invoices are created and submitted in the background — including through our ePINTAR middleware approach used with IOS customers.",
     bestFor: "Larger businesses and companies with IT support",
     points: [
       "Connect ERP, POS, or custom systems",
@@ -89,28 +157,32 @@ export const solutions = [
 
 export const useCases = [
   {
-    title: "Retail & multi-outlet",
+    title: "Manufacturing & QAD users",
     story:
-      "Head office needs one place to see e-invoice status across all stores — without asking every outlet to type into a government portal.",
-    outcome: "Bulk upload or system link; less weekend catch-up for finance.",
+      "You already run QAD (or another ERP). Re-typing invoices into a government portal every week is slow and risky.",
+    outcome:
+      "IOS connects e-invoice to your ERP path — file, API, or hybrid — so production and finance keep moving.",
   },
   {
-    title: "Manufacturing & wholesale",
+    title: "Retail & multi-outlet",
     story:
-      "Hundreds of invoices leave the ERP every week. Re-typing them is slow and error-prone.",
-    outcome: "API or file feed turns ERP invoices into compliant e-invoices.",
+      "Head office needs one view of e-invoice status across stores without changing every outlet’s POS overnight.",
+    outcome:
+      "Bulk upload or system link; less weekend catch-up for finance.",
   },
   {
     title: "Professional services & SMEs",
     story:
       "Partners raise invoices occasionally and need something simple that still meets LHDN rules.",
-    outcome: "Portal access — create, send, and track without a big IT project.",
+    outcome:
+      "Portal access — create, send, and track without a large IT project.",
   },
   {
-    title: "Healthcare & clinics",
+    title: "Healthcare, electronics & automotive",
     story:
-      "Billing lives in clinical software; finance still needs LHDN-ready documents for corporate clients.",
-    outcome: "Connect systems or upload exports so teams stay in their tools.",
+      "Industries IOS has long served with QAD need e-invoice that fits regulated and high-volume operations.",
+    outcome:
+      "Proven project approach: implement, train, integrate, and support after go-live.",
   },
 ] as const;
 
@@ -118,12 +190,12 @@ export const plainBenefits = [
   {
     title: "Stay on the right side of LHDN",
     description:
-      "Built for Malaysia’s e-invoice requirements so your team spends less time worrying about compliance rules.",
+      "Built for Malaysia’s e-invoice mandate so your team spends less time worrying about rule changes.",
   },
   {
     title: "Save hours every week",
     description:
-      "Less re-typing, less chasing status, fewer rejected invoices — finance can focus on the business.",
+      "Less re-typing, less chasing status, fewer rejected invoices — finance focuses on the business.",
   },
   {
     title: "Pick what fits your team",
@@ -131,9 +203,9 @@ export const plainBenefits = [
       "Start with the portal, move to file upload, or go fully automated with API when you are ready.",
   },
   {
-    title: "Local support you can call",
+    title: "Local partner you can call",
     description:
-      "Malaysia-based team at Oasis Damansara — we help with onboarding, questions, and rollout planning.",
+      "IOS team at Oasis Damansara — QAD and e-invoice experience, with named contacts for support.",
   },
 ] as const;
 
@@ -142,39 +214,112 @@ export const simpleSteps = [
     step: "1",
     title: "Tell us how you invoice today",
     description:
-      "Spreadsheet, accounting software, ERP, or paper-heavy process — we match a simple path for your size.",
+      "Spreadsheet, accounting software, QAD/SAP/Sage, or mixed process — we map a simple path for your size.",
   },
   {
     step: "2",
     title: "Choose portal, upload, or API",
     description:
-      "We set you up on the option that fits: easy web portal, secure file upload, or system connection.",
+      "We set you up on the option that fits: easy web portal, secure file upload, or system connection (ePINTAR).",
   },
   {
     step: "3",
-    title: "Send e-invoices with confidence",
+    title: "Go live with training & support",
     description:
-      "Track status, email customers, and keep records tidy — with far less manual work.",
+      "IOS provides implementation, training, and ongoing support so your team is confident after launch.",
+  },
+] as const;
+
+/** Company story — from About Us on iosmalaysia.com */
+export const companyAbout = {
+  intro:
+    "Integrated Operation Solutions Sdn. Bhd. (IOS) is a QAD Services Partner in Malaysia. Our focus is successful QAD ERP implementation and LHDN e-invoice — including our Einvoicify product and ePINTAR middleware approach.",
+  detail:
+    "IOS provides full project implementation, training, customisation, integration, migration, upgrade, and maintenance for QAD ERP. We serve customers in medical, electronics, consumer products, food & beverage, rubber, and automotive industries.",
+  experience:
+    "Our consultants bring over 16 years of QAD experience. One of IOS’s founders was a pioneer QAD MFG/PRO consultant — implementing QAD for a rubber glove manufacturer in the early 1990s, then an UPS manufacturer — with more than 30 customers successfully implemented since.",
+  extra:
+    "We also offer disaster recovery (DR), web application development complementary to QAD, and extensions that meet local industry needs.",
+  vision:
+    "Our passion is providing innovative software solutions and services to all our customers.",
+  mission:
+    "To deliver professional services and ensuring quality within the range of services we provide — with local flavour and global standards that work for each client’s audience.",
+} as const;
+
+export const industriesServed = [
+  "Medical",
+  "Electronics",
+  "Consumer products",
+  "Food & beverage",
+  "Rubber",
+  "Automotive",
+] as const;
+
+/** Services from iosmalaysia.com/our-services.aspx */
+export const iosServices = [
+  "Project management & ERP consulting",
+  "QAD business process design",
+  "QAD implementation",
+  "QAD assessments",
+  "QAD upgrades",
+  "QAD training",
+  "QAD business intelligence",
+  "QAD customisation",
+  "QAD reporting",
+  "QAD database tuning",
+  "QAD workshops",
+  "Disaster recovery (DR) services",
+  "Add-on web applications",
+  "LHDN e-invoice (Einvoicify / ePINTAR)",
+] as const;
+
+/** QAD product areas from iosmalaysia.com */
+export const qadProducts = [
+  {
+    name: "QAD Financials",
+    description:
+      "Increase fiscal control and compliance with government mandates for regional and multi-national corporations.",
+  },
+  {
+    name: "QAD Customer Management",
+    description:
+      "Improve responsiveness through better collaboration and management of customers and demand from pre- to post-sale.",
+  },
+  {
+    name: "QAD Service & Support",
+    description:
+      "Manage installation, ongoing support, maintenance and repair — including warranty or service contracts — and track engineering resources.",
+  },
+  {
+    name: "QAD Manufacturing",
+    description:
+      "Reduce cost and increase throughput with modern manufacturing scheduling and shop-floor tools.",
+  },
+  {
+    name: "QAD Supply Chain",
+    description:
+      "Improve management of supply and suppliers through real-time collaboration.",
+  },
+  {
+    name: "QAD Analytics",
+    description:
+      "Measure business performance in key areas for better decisions.",
   },
 ] as const;
 
 export const integrations = [
+  { name: "QAD", category: "Manufacturing ERP" },
   { name: "SAP", category: "Enterprise ERP" },
+  { name: "Epicor", category: "Enterprise ERP" },
+  { name: "Sage", category: "Accounting" },
+  { name: "Syteline", category: "Manufacturing ERP" },
   { name: "Microsoft Dynamics", category: "Enterprise ERP" },
   { name: "Oracle NetSuite", category: "Cloud ERP" },
-  { name: "QAD", category: "Manufacturing ERP" },
-  { name: "Navision", category: "Enterprise ERP" },
-  { name: "Syspro", category: "Manufacturing ERP" },
-  { name: "Sage", category: "Accounting" },
   { name: "SQL Accounting", category: "Accounting" },
   { name: "Tally", category: "Accounting" },
-  { name: "Medic", category: "Healthcare" },
-  { name: "Wallet", category: "Retail / POS" },
-  { name: "Kingdee", category: "Enterprise ERP" },
-  { name: "Plato", category: "Accounting" },
-  { name: "Epicor", category: "Enterprise ERP" },
   { name: "AutoCount", category: "Accounting" },
-  { name: "Custom API / CSV", category: "Integration" },
+  { name: "Medic", category: "Healthcare" },
+  { name: "Custom API / CSV / SFTP", category: "Integration" },
 ] as const;
 
 export const lhdnPhases = [
@@ -225,7 +370,8 @@ export const chatTopics = [
   "Pricing inquiry",
   "Portal access",
   "SFTP upload",
-  "API connection",
+  "API / ePINTAR",
+  "QAD integration",
   "LHDN compliance",
   "Product demo",
   "Other",
@@ -238,7 +384,7 @@ export const caseStudies = [
     company: "Mid-sized manufacturer · Selangor",
     title: "From weekend portal work to automatic e-invoices",
     summary:
-      "A manufacturing team processing thousands of invoices monthly stopped re-typing into the government portal by connecting their ERP to Einvoicify.",
+      "A manufacturing team processing thousands of invoices monthly stopped re-typing into the government portal by connecting their ERP through IOS e-invoice solutions.",
     challenge:
       "Finance staff spent many hours each week re-keying invoices. Errors caused delays and customer delivery lagged.",
     solution:
@@ -331,7 +477,7 @@ export const productHighlights = [
   {
     title: "Works with your tools",
     description:
-      "Portal alone, file upload, or connect ERP and accounting systems.",
+      "Portal alone, file upload, or connect QAD, SAP, Sage, Epicor, Syteline and more.",
   },
   {
     title: "Customer delivery",
@@ -339,13 +485,13 @@ export const productHighlights = [
       "Send invoices to customers by email after they are ready.",
   },
   {
-    title: "Malaysia-ready",
+    title: "Backed by IOS",
     description:
-      "Designed around LHDN e-invoice requirements for local businesses.",
+      "Implementation, training, and support from Integrated Operation Solutions in Selangor.",
   },
 ] as const;
 
-/** Technical — used on /compliance, not homepage */
+/** Technical — used on /compliance */
 export const ublTechSpecs = {
   standard: "UBL 2.1",
   standardFull: "Universal Business Language (UBL) 2.1 — OASIS",
@@ -422,56 +568,25 @@ export const ublCoreElements = [
 
 export const efficiencyStats = [
   {
+    value: "23+",
+    label: "customers live",
+    detail: "ERP customers live on IOS LHDN e-invoice solutions.",
+  },
+  {
     value: "3 ways",
     label: "to get started",
-    detail: "Portal, SFTP upload, or API — pick what fits your team today.",
+    detail: "Portal, SFTP upload, or API — pick what fits your team.",
   },
   {
     value: "16+",
-    label: "systems we connect",
-    detail: "Popular ERP and accounting software used across Malaysia.",
-  },
-  {
-    value: "Faster",
-    label: "invoice cycle",
-    detail: "Less re-typing and chasing — more time for real work.",
+    label: "years QAD depth",
+    detail: "Deep ERP experience across manufacturing industries.",
   },
   {
     value: "Local",
     label: "Malaysia support",
-    detail: "Team based in Selangor — call or email when you need help.",
+    detail: "Team based at Oasis Damansara, Selangor.",
   },
 ] as const;
 
-export const enterprisePillars = [
-  {
-    title: "LHDN-ready process",
-    description:
-      "Stay aligned with Malaysia e-invoice requirements without turning finance into an IT project.",
-  },
-  {
-    title: "Handles busy months",
-    description:
-      "Whether you send dozens or thousands of invoices, choose the path that keeps pace.",
-  },
-  {
-    title: "Portal · SFTP · API",
-    description:
-      "Three clear options — start simple and grow into automation when you need it.",
-  },
-  {
-    title: "Clear status tracking",
-    description:
-      "Know what was sent, what was accepted, and what needs a quick fix.",
-  },
-  {
-    title: "Fewer avoidable errors",
-    description:
-      "Checks before submission help reduce rejected invoices and rework.",
-  },
-  {
-    title: "Customers get invoices on time",
-    description:
-      "Optional automatic email delivery after invoices are ready.",
-  },
-] as const;
+export const enterprisePillars = whyIos;
