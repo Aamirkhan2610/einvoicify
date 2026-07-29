@@ -6,6 +6,17 @@
 
 ---
 
+## Windows / Hanventure host (iosmalaysia.com)
+
+**No Node required.** Upload the `static-host/` folder contents to the existing Hanventure Windows server (domain & hosting stay with them).
+
+- Full guide: [`static-host/README.md`](./static-host/README.md)
+- PHP 8+ + PDO SQLite + writable `data/` folder
+- Marketing site + contact/demo forms + chat widget + CRM
+- CRM login: `/crm/login.php` (change password in `static-host/includes/config.php`)
+
+---
+
 ## Recommended free host: Vercel (Next.js)
 
 ### 1. Import the repo

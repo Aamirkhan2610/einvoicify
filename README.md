@@ -6,6 +6,14 @@ Modern marketing site and basic CRM for **[Einvoicify](https://einvoicify.my)** 
 
 **Live product:** [https://app.einvoicify.my](https://app.einvoicify.my)
 
+### Windows hosting package (Hanventure / IIS)
+
+For `www.iosmalaysia.com` without changing hoster, use the static PHP package:
+
+- Folder: [`static-host/`](./static-host/)
+- Deploy guide: [`static-host/README.md`](./static-host/README.md)
+- Same look & feel, CRM, chat, and forms — PHP + SQLite (no Node on the server)
+
 ---
 
 ## Features
